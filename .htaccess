@@ -1,2 +1,3 @@
 RewriteEngine on
-RewriteRule ^(?i)proveedores$ controllers/Listaproveedores.php
+RewriteRule ^(?i)proveedores$ controllers/ListaProveedores.php
+RewriteRule ^(?i)agregar-proveedor$ controllers/AgregarProveedor.php
