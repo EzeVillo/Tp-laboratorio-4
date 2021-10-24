@@ -14,4 +14,13 @@ class Solicitud_de_reparacion extends Model
 
         $this->db->query("INSERT INTO solicitud_de_reparacion (Id_cliente, Id_aparato) VALUES ($Id_cliente, $Id_aparato)");
     }
+
+    public function Get_estado($Id_solicitud_de_reparacion)
+    {
+        if (!ctype_digit($Id_solicitud_de_reparacion)) throw new Exception();
+
+        $this->db->query("SELECT nombre FROM solicitud_de_reparacion s LEFT JOIN estado e on e.Id_estado = s.Id_estado WHERE Id_solicitud_de_reparacion = $Id_solicitud_de_reparacion");
+        if ($this->db->numRows() != 1) return "Solicitud de reparacion no existente";
+        return $this->db->fetch()["nombre"];
+    }
 }
