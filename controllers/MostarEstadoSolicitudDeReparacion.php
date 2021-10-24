@@ -1,7 +1,6 @@
 <?php
 require '../fw/fw.php';
 require '../models/Solicitud_De_Reparacion.php';
-require '../views/ListadoProveedores.php';
 require '../views/EstadoSolicitudDeReparacion.php';
 
 $v = new EstadoSolicitudDeReparacion();
