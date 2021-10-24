@@ -3,3 +3,4 @@ RewriteRule ^(?i)proveedores$ controllers/ListaProveedores.php
 RewriteRule ^(?i)agregar-proveedor$ controllers/AgregarProveedor.php
 RewriteRule ^(?i)agregar-solicitud-reparacion$ controllers/AgregarSolicitudDeReparacion.php
 RewriteRule ^(?i)estado-solicitud-reparacion$ controllers/MostarEstadoSolicitudDeReparacion.php
+RewriteRule ^(?i)estado-caja$ controllers/MostarEstadoDeLaCaja.php
