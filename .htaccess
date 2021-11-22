@@ -5,3 +5,4 @@ RewriteRule ^(?i)agregar-solicitud-reparacion$ controllers/AgregarSolicitudDeRep
 RewriteRule ^(?i)estado-solicitud-reparacion$ controllers/MostarEstadoSolicitudDeReparacion.php
 RewriteRule ^(?i)estado-caja$ controllers/MostarEstadoDeLaCaja.php
 RewriteRule ^(?i)pago-factura$ controllers/PagoFactura.php
+RewriteRule ^(?i)retirar-aparato$ controllers/RetirarAparato.php
