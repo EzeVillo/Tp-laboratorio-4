@@ -27,14 +27,14 @@ class Solicitud_de_reparacion extends Model
     
     public function PagoFactura($id_solicitud_de_reparacion)
     {
-        if (!ctype_digit($id_solicitud_de_reparacion)) throw new Exception();
+        if (!ctype_digit($id_solicitud_de_reparacion)) throw new Exception("El id de la solicitud de reparacion debe ser un numero");
 
         $this->db->query("SELECT COUNT(Id_solicitud_de_reparacion) c 
         FROM Solicitud_de_reparacion 
         WHERE Id_solicitud_de_reparacion = $id_solicitud_de_reparacion &&
         Pagado = 'No'
         LIMIT 1");
-        if ($this->db->fetch()["c"] != 1) throw new Exception();
+        if ($this->db->fetch()["c"] != 1) throw new Exception("No existe una solicitud de repacion con ese id y que no este pagada");
 
         $this->db->query("UPDATE Solicitud_de_reparacion SET Pagado = 'Si'");
     }

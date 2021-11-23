@@ -1,3 +1,4 @@
+<div class="Pregunta">
 <?php
 require "Header.php";
 
@@ -14,3 +15,5 @@ if ($this->msg != null) {
 </form>
 <?php
 require "Footer.php";
+?>
+</div>
