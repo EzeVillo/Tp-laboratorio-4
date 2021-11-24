@@ -13,6 +13,8 @@ class Solicitud_de_reparacion extends Model
         if ($this->db->fetch()["c"] != 1) throw new Exception();
 
         $this->db->query("INSERT INTO solicitud_de_reparacion (Id_cliente, Id_aparato) VALUES ($Id_cliente, $Id_aparato)");
+        $this->db->query("SELECT Id_solicitud_de_reparacion i FROM Solicitud_de_reparacion ORDER BY Id_solicitud_de_reparacion DESC LIMIT 1");
+        return $this->db->fetch()["i"];
     }
 
     public function Get_estado($Id_solicitud_de_reparacion)
@@ -27,14 +29,14 @@ class Solicitud_de_reparacion extends Model
     
     public function PagoFactura($id_solicitud_de_reparacion)
     {
-        if (!ctype_digit($id_solicitud_de_reparacion)) throw new Exception();
+        if (!ctype_digit($id_solicitud_de_reparacion)) throw new Exception("El id de la solicitud de reparacion debe ser un numero");
 
         $this->db->query("SELECT COUNT(Id_solicitud_de_reparacion) c 
         FROM Solicitud_de_reparacion 
         WHERE Id_solicitud_de_reparacion = $id_solicitud_de_reparacion &&
         Pagado = 'No'
         LIMIT 1");
-        if ($this->db->fetch()["c"] != 1) throw new Exception();
+        if ($this->db->fetch()["c"] != 1) throw new Exception("No existe una solicitud de repacion con ese id y que no este pagada");
 
         $this->db->query("UPDATE Solicitud_de_reparacion SET Pagado = 'Si'");
     }

@@ -10,9 +10,17 @@ $v = new PagoFactura();
 if (isset($_POST["id_solicitud_de_reparacion"], $_POST["monto"], $_POST["id_metodo_de_pago"])) {
     $p = new Pago();
     $s = new Solicitud_de_reparacion();
-    $s->PagoFactura($_POST["id_solicitud_de_reparacion"]);
-    $p->NuevoPago($_POST["id_solicitud_de_reparacion"], $_POST["monto"], $_POST["id_metodo_de_pago"]);
-    $v->estado = "Pago confirmado";
+    try {
+        $s->PagoFactura($_POST["id_solicitud_de_reparacion"]);
+        $p->NuevoPago($_POST["id_solicitud_de_reparacion"], $_POST["monto"], $_POST["id_metodo_de_pago"]);
+    } catch (Exception $ex) {
+        $error = $ex->getMessage();
+    }
+    if (isset($error)) {
+        $v->msg = $error;
+    } else {
+        $v->msg = "Pago confirmado";
+    }
 }
 $v->Metodos_de_pago = $m->Get_Metodos_de_pago();
 $v->title = "Pago Factura";

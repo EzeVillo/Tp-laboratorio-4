@@ -1,6 +1,10 @@
 <?php
 require "Header.php";
-
+if ($this->msg != null) {
+?>
+    <p><?= $this->msg ?></p>
+<?php
+}
 if ($this->estado != null) {
 ?>
     <p><?= $this->estado ?></p>
