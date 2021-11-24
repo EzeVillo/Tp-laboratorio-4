@@ -13,6 +13,8 @@ class Solicitud_de_reparacion extends Model
         if ($this->db->fetch()["c"] != 1) throw new Exception();
 
         $this->db->query("INSERT INTO solicitud_de_reparacion (Id_cliente, Id_aparato) VALUES ($Id_cliente, $Id_aparato)");
+        $this->db->query("SELECT Id_solicitud_de_reparacion i FROM Solicitud_de_reparacion ORDER BY Id_solicitud_de_reparacion DESC LIMIT 1");
+        return $this->db->fetch()["i"];
     }
 
     public function Get_estado($Id_solicitud_de_reparacion)

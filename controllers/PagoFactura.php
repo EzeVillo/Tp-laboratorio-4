@@ -19,7 +19,7 @@ if (isset($_POST["id_solicitud_de_reparacion"], $_POST["monto"], $_POST["id_meto
     if (isset($error)) {
         $v->msg = $error;
     } else {
-        $v->estado = "Pago confirmado";
+        $v->msg = "Pago confirmado";
     }
 }
 $v->Metodos_de_pago = $m->Get_Metodos_de_pago();

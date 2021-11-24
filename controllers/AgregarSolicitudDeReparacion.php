@@ -14,7 +14,7 @@ $v->Aparatos = $a->Get_aparato();
 if (isset($_POST["cliente"], $_POST["aparato"])) {
     $s = new Solicitud_de_reparacion();
     try {
-        $s->Crear_solicitud_de_reparacion($_POST["cliente"], $_POST["aparato"]);
+        $Id = $s->Crear_solicitud_de_reparacion($_POST["cliente"], $_POST["aparato"]);
     } catch (Exception $ex) {
         $error = $ex->getMessage();
     }
@@ -22,7 +22,7 @@ if (isset($_POST["cliente"], $_POST["aparato"])) {
         $v->msg = $error;
     }
     else{
-        $v->msg = "Se creo correctamente la solicitud del cliente con DNI " . $_POST["cliente"];
+        $v->msg = "Se creo correctamente la solicitud, el id es ". $Id;
     }
 }
 $v->render();
